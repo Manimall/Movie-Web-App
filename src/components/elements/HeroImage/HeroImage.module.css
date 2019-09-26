@@ -1,0 +1,45 @@
+.block {
+  composes: fadeIn from global;
+  position: relative;
+  background-color: var(--bg-color);
+  background-size: cover;
+  background-position: center;
+}
+
+.block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(transparent 40%, var(--overlay-color));
+}
+
+.wrapper {
+  composes: container from global;
+  /* position needs to put over gradient */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 600px;
+}
+
+.content {
+  max-width: 700px;
+  margin: 40px 0;
+  color: var(--text-color);
+  text-shadow: 0 1px 2px var(--theme-dark);
+}
+
+.content p {
+  font-size: 1.4rem;
+  line-height: 1.25;
+}
+
+@media screen and (max-width: 720px) {
+  .content p {
+    font-size: 1.2rem;
+  }
+}

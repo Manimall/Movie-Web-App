@@ -1,0 +1,41 @@
+.block {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+.content {
+  composes: container from global;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.content img {
+  display: block;
+}
+
+.logo {
+  width: 300px;
+}
+
+.tmdbLogo {
+  width: 120px;
+}
+
+@media (max-width: 720px) {
+  .logo {
+    width: 150px;
+  }
+
+  .content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .tmdbLogo {
+    width: 80px;
+  }
+}
+

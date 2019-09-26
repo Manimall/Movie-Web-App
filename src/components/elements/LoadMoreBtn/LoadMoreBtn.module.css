@@ -1,0 +1,34 @@
+.block {
+  composes: container from global;
+}
+
+.btn {
+  padding: 0.5em;
+  margin-top: 1em;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--text-color);
+  background-color: hsl(155, 75%, 35%);
+  border: 0;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .btn {
+    font-size: 1.75rem;
+  }
+}
+
+.btn:hover {
+  background-color: hsl(155, 75%, 40%);
+}
+
+.btn:active {
+  background-color: hsl(155, 75%, 30%);
+}
+
+.btn:focus:active {
+  outline: none;
+}

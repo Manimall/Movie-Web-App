@@ -1,0 +1,22 @@
+{
+  "extends": "react-app",
+  "plugins": [
+    "react-hooks"
+  ],
+  "rules": {
+    "max-statements": ["error", 8],
+    "max-depth": ["error", 4],
+    "max-params": ["error", 3],
+    "react/destructuring-assignment": ["error", "always"],
+    "react/no-array-index-key": "error",
+    "react/jsx-no-bind": {
+      "ignoreDOMComponents": true,
+      "ignoreRefs": false,
+      "allowArrowFunctions": false,
+      "allowFunctions": false,
+      "allowBind": false
+    },
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn" // <--- THIS IS THE NEW RULE
+  }
+}
