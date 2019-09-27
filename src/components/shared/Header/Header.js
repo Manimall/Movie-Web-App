@@ -17,7 +17,9 @@ import styles from './Header.module.css';
 			</Link>
 
 			<Link
-				to={'https://www.themoviedb.org'}
+				to={{
+					pathname: 'https://www.themoviedb.org'
+				}}
 				target={'_blank'}
 				rel={'noopener noreferrer'}
 				title={'to MovieDB page'}

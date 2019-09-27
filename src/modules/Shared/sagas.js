@@ -8,8 +8,8 @@ function* fetchMoviesUpdateFlow ({payload}) {
 	try {
 		console.log(payload);
 		const result = yield call(getMovies, payload);
-		// console.log(result);
-		yield put(fetchMoviesSuccess(result));
+		console.log(result);
+
 		yield put(updateItems(result));
 	} catch (error) {
 		console.log(error);

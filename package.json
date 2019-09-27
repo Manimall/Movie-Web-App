@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -37,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "eslint-plugin-react-hooks": "^2.0.1"
   }
 }

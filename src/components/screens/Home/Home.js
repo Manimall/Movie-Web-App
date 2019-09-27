@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.css';
 import HeroImage from "../../elements/HeroImage";
 import SearchBar from "../../elements/SearchBar";
 import FourColGrid from "../../elements/FourColGrid";
-import MovieThumb from "../../elements/MovieThumb";
 import LoadMoreBtn from "../../elements/LoadMoreBtn";
 import Spinner from "../../elements/Spinner";
+import Page from "../../elements/Page";
 
 import { getBackdropUrl } from "../../../helpers/config";
 import {fetchMoviesRequest} from "../../../modules/Movies";
@@ -16,8 +16,9 @@ import {LANG, API_URL, API_KEY} from "../../../helpers/config";
 
 const Home = (props) => {
 
-	console.log(props);
-	const { movies: { isLoading, data, error, currentPage, totalPages, searchTerm } } = props;
+	const [searchTerm, setSearchTerm] = useState(``);
+	console.log(searchTerm);
+	const { movies: { isLoading, data, error, currentPage, totalPages } } = props;
 	const { fetchMoviesRequest, updateState } = props;
 
 	// type - popular movies or searching movies
@@ -41,6 +42,10 @@ const Home = (props) => {
 				? searchEP(loadMore)(searchTerm)
 				: popularEP(loadMore)('')
 		);
+
+		const newSearchTerm = loadMore ? searchTerm : setSearchTerm(search);
+		console.log(newSearchTerm);
+		return newSearchTerm;
 	};
 
 
@@ -52,22 +57,28 @@ const Home = (props) => {
 	console.log(data);
 
 	return (
-		<div>
-			{heroImage && (
+		<Page>
+			{heroImage && !searchTerm && (
 				<HeroImage
 					img={getBackdropUrl(heroImage.backdrop_path)}
 					title={heroImage.title}
 					overview={heroImage.overview}
 				/>
 			)}
-			<SearchBar/>
-			<FourColGrid/>
-			<MovieThumb/>
+
+			<SearchBar callback={updateMovies}/>
+
+			<FourColGrid
+				title={searchTerm ? `Search results for "${searchTerm}"` : 'Popular Movies'}
+				error={error}
+				movies={data}
+			/>
+
 			{isLoading && <Spinner/>}
 			{currentPage < totalPages && !isLoading && (
 				<LoadMoreBtn text={'Load More'} onClick={updateMovies} />
 			)}
-		</div>
+		</Page>
 	);
 };
 
